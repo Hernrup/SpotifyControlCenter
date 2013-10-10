@@ -20,6 +20,8 @@ Pause playback
 Resume playback
 ###Get status
 Return client status. Includes current track, album,artist,volume,position and allot more.
+###Client version
+Get client version for compatibility check.
 
 ## Metadata actions
 
