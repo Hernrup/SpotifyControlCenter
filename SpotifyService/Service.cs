@@ -10,10 +10,25 @@ namespace SpotifyService
 {
     public class Service
     {
+        private static Service instance;
+
+
+        public static Service Instance
+       {
+          get 
+          {
+             if (instance == null)
+             {
+                 instance = new Service();
+             }
+             return instance;
+          }
+       }
+
         private SpotifyLocalApi.API localAPI;
         private SpotifyMetaDataAPI.API metaAPI;
         
-        public Service() {
+        private Service() {
             setupLocalApi();
             setupMetaApi();
         }
@@ -21,7 +36,7 @@ namespace SpotifyService
         public SpotifyMetaDataAPI.Track  getTrackInfo(string trackUri) {
             return metaAPI.getTrackInfo(trackUri);
         }
-
+      
         public SpotifyLocalApi.Status play(string uri,string startingPosition){
             localAPI.URI = uri+"%23"+startingPosition;
             return localAPI.Play;
